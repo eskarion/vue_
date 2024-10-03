@@ -28,7 +28,6 @@ export default {
 
         const data = await response.json()
         this.projects = Object.values(data) // Konvertiert das Objekt in ein Array
-        console.log(this.projects)
       } catch (error) {
         console.error(`Error fetching /projectlist: ${error}`)
       }
@@ -65,12 +64,11 @@ export default {
         >
           <ul class="py-1" aria-labelledby="dropdown">
             <li v-for="project in projects" :key="project.id">
-              <a
+              <router-link
+                :to="`/project/${project.id}`"
                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                :href="`/project/${project.id}`"
+                >{{ project.name }}</router-link
               >
-                {{ project.name }}
-              </a>
             </li>
           </ul>
         </div>
@@ -123,11 +121,11 @@ export default {
             >
           </li>
           <li>
-            <a
-              href="/newProject"
+            <router-link
+              to="/newProject"
               id="navNewProject"
               class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Neues Projekt</a
+              >Neues Projekt</router-link
             >
           </li>
           <li>

@@ -1,21 +1,16 @@
 <script>
-  import navBar from './components/navBar.vue'
-  import startPage from './components/startPage.vue'
+import navBar from './components/navBar.vue'
 
-  export default {
-    components: {
-      navBar,
-      startPage
-    }
+export default {
+  components: {
+    navBar
   }
+}
 </script>
 
 <template>
   <navBar />
-  <startPage />
+  <router-view />
 </template>
- 
 
-<style scoped>
-  
-</style>
+<style scoped></style>

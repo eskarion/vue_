@@ -1,7 +1,5 @@
 <script></script>
 
 <template>
-  <div></div>
+  <h1>Neues Projekt</h1>
 </template>
-
-<style></style>
