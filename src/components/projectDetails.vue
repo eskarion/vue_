@@ -42,7 +42,9 @@ export default {
 }
 </script>
 <template>
-  <div>
-    <p>Route params id: {{ $route.params.id }}</p>
-  </div>
+  <v-container fluid>
+    <div>
+      <p>Route params id: {{ $route.params.id }}</p>
+    </div>
+  </v-container>
 </template>

@@ -9,8 +9,16 @@ export default {
 </script>
 
 <template>
-  <navBar />
-  <router-view />
+  <v-app>
+    <navBar />
+    <v-main class="main_background">
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style scoped></style>
+<style>
+.main_background {
+  background-color: #070f1b;
+}
+</style>
