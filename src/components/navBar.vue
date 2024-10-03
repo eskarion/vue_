@@ -1,7 +1,4 @@
 <script>
-import { apiUrl, key } from '../api'
-import { initFlowbite } from 'flowbite'
-
 export default {
   name: 'navBar',
   data() {
@@ -36,9 +33,7 @@ export default {
   created() {
     this.fetchProjects()
   },
-  onMounted() {
-    initFlowbite()
-  }
+  onMounted() {}
 }
 </script>
 

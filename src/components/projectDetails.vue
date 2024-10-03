@@ -1,6 +1,5 @@
 <script>
 import { apiUrl, key } from '../api'
-import { initFlowbite } from 'flowbite'
 
 export default {
   data() {
@@ -10,7 +9,6 @@ export default {
     }
   },
   onMounted() {
-    initFlowbite()
     console.log('mounted projectdetails')
     this.projectId = this.$route.params.id
     console.log(`found this id ${this.projectId}`)
