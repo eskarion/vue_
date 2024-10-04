@@ -12,7 +12,9 @@ export default {
   <v-app>
     <navBar />
     <v-main class="main_background">
-      <router-view />
+      <v-container>
+        <router-view />
+      </v-container>
     </v-main>
   </v-app>
 </template>
