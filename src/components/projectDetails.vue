@@ -1,43 +1,37 @@
 <script>
-import { apiUrl, key } from '../api'
+import { useProjectStore } from '@/stores/projectStore'
+import { mapState, mapActions } from 'pinia'
+const costs = {
+  originalCurrency: 'EUR',
+  originalAmount: 110.0
+}
+
+const headers = [
+  { title: 'Nummer', value: 'costs.number' },
+  { title: 'Titel', key: 'name.last' },
+  { title: 'Info' },
+  {
+    title: 'Betrag',
+    key: 'fullName',
+    value: (items) => `${costs.originalAmount} ${costs.originalCurrency}`
+  }
+]
 
 export default {
   data() {
     return {
       projectId: null,
-      project: null
+      project: null,
+      name: name,
+      headers: headers
     }
   },
-  onMounted() {
-    console.log('mounted projectdetails')
-    this.projectId = this.$route.params.id
-    console.log(`found this id ${this.projectId}`)
-    this.fetchProjectDetails(this.projectId)
+  computed: {
+    ...mapState(useProjectStore, ['projects'])
   },
-  methods: {
-    async fetchProjectDetails(projectId) {
-      // Beispiel: API-Aufruf, um Projektdetails basierend auf der ID zu laden
-      const url = apiUrl + `/project/${projectId}`
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'x-api-key': key,
-            Accept: '*/*',
-            'User-Agent': 'Vue App'
-          }
-        })
-
-        if (response.ok) {
-          this.project = await response.json()
-          console.log(this.project)
-        } else {
-          console.error('Fehler beim Laden der Projektdetails.')
-        }
-      } catch (error) {
-        console.error('Fehler beim Abrufen der Daten:', error)
-      }
-    }
+  methods: { ...mapActions(useProjectStore, ['fetchProjects']) },
+  mounted() {
+    this.fetchProjects()
   }
 }
 </script>
@@ -45,6 +39,7 @@ export default {
   <v-container fluid>
     <div>
       <p>Route params id: {{ $route.params.id }}</p>
+      <v-data-table :items="items" :headers="headers"></v-data-table>
     </div>
   </v-container>
 </template>
