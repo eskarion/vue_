@@ -32,9 +32,9 @@ export default {
     },
     openEditDialog(project) {
       this.projectToEdit = project.id
-      this.projectToEditName = project.name
+      this.projectToEditName = project.name       //refactor double values?
       this.projectToEditDescription = project.description
-      this.newProjectName = project.name
+      this.newProjectName = project.name          //refactor double values?
       this.newProjectDescription = project.description
       this.editDialog = true
     },

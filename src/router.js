@@ -11,8 +11,7 @@ const routes = [
   {
     path: '/project/:id',
     name: 'project-details',
-    component: ProjectDetails,
-    props: true
+    component: ProjectDetails
   },
   {
     path: '/newProject',

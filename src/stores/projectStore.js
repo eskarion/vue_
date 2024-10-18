@@ -23,7 +23,7 @@ export const useProjectStore = defineStore('projectStore', {
         const response = await fetch(url, {
           method: 'POST',
           headers: requestHeader,
-          body: encodedParams
+          body: new URLSearchParams(encodedParams)
         })
         await response
       } catch (error) {
@@ -40,6 +40,18 @@ export const useProjectStore = defineStore('projectStore', {
         console.error('Fehler beim Abrufen der Projekte:', error)
       }
     },
+    async fetchProjectDetails(projectId){
+      const url = apiUrl + '/project/' + projectId
+      try {
+        const response = await fetch(url, {headers: requestHeader})
+        const data = await response.json()
+        console.log(data)
+        this.projectDetails = Object.values(data.cost)
+        console.log(this.projectDetails)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async deleteProject(projectId) {
       const url = apiUrl + '/deleteproject'
       const encodedParams = new URLSearchParams()
@@ -51,7 +63,7 @@ export const useProjectStore = defineStore('projectStore', {
         const response = await fetch(url, {
           method: 'DELETE',
           headers: requestHeader,
-          body: encodedParams
+          body: new URLSearchParams(encodedParams)
         })
 
         await response.json()
