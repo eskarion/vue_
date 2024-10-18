@@ -12,11 +12,9 @@ export default {
     }
   },
   computed: {
-    // Verwende mapState, um den Projekten-Array aus dem Store zu mappen
     ...mapState(useProjectStore, ['projects'])
   },
   methods: {
-    // Verwende mapActions, um Aktionen aus dem Store zu mappen
     ...mapActions(useProjectStore, ['fetchProjects', 'newProject']),
     openNewDialog() {
       this.newDialog = true
@@ -34,7 +32,6 @@ export default {
     }
   },
   mounted() {
-    // Beim Mounten der Komponente Projekte abrufen
     this.fetchProjects()
   }
 }

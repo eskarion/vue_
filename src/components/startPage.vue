@@ -32,9 +32,9 @@ export default {
     },
     openEditDialog(project) {
       this.projectToEdit = project.id
-      this.projectToEditName = project.name       //refactor double values?
+      this.projectToEditName = project.name //refactor double values?
       this.projectToEditDescription = project.description
-      this.newProjectName = project.name          //refactor double values?
+      this.newProjectName = project.name //refactor double values?
       this.newProjectDescription = project.description
       this.editDialog = true
     },
@@ -61,7 +61,11 @@ export default {
   <v-row>
     <v-col cols="12" md="4" v-for="project in projects" :key="project.id">
       <v-card style="min-height: 160px" :elevation="10">
-        <template v-slot:title> {{ project.name }} </template>
+        <template v-slot:title>
+          <a :href="`/project/${project.id}`" class="text-link" style="font-size: 1.25rem">
+            {{ project.name }}
+          </a>
+        </template>
 
         <template v-slot:text>
           {{ project.description }}
@@ -128,6 +132,15 @@ export default {
 
 <style>
 h1 {
+  color: #2a6f75;
+}
+.text-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.text-link:hover {
   color: #2a6f75;
 }
 </style>

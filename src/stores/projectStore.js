@@ -40,14 +40,12 @@ export const useProjectStore = defineStore('projectStore', {
         console.error('Fehler beim Abrufen der Projekte:', error)
       }
     },
-    async fetchProjectDetails(projectId){
+    async fetchProjectDetails(projectId) {
       const url = apiUrl + '/project/' + projectId
       try {
-        const response = await fetch(url, {headers: requestHeader})
+        const response = await fetch(url, { headers: requestHeader })
         const data = await response.json()
-        console.log(data)
-        this.projectDetails = Object.values(data.cost)
-        console.log(this.projectDetails)
+        this.projectDetails = Object.values(data.costs)
       } catch (error) {
         console.log(error)
       }
